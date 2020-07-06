@@ -6,6 +6,11 @@
 #include <type_traits>
 #include <utility>
 
+template <class T>
+constexpr std::add_const_t<T>& as_const(T& t) noexcept
+{
+    return t;
+}
 template<typename T, int VAL = -1, size_t DIM = 2>
 class Matrix
 {
@@ -83,7 +88,7 @@ public:
         }
         operator T() const
         {
-            return std::as_const(realMatrix)(proxyIdx);
+            return as_const(realMatrix)(proxyIdx);
         }
 
         Proxy& operator[](size_t val)
