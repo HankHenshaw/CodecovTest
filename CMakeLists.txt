@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(codecov VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+project(codecov VERSION 0.0.1$ENV{TRAVIS_BUILD_NUMBER})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
@@ -16,6 +16,8 @@ set_target_properties(matrix tests PROPERTIES
 set_target_properties(tests PROPERTIES
     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
+    LINK_FLAGS "-lgcov --coverage"
 )
 
 target_link_libraries(tests
