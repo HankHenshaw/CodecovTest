@@ -1,16 +1,18 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#pragma once
 
 #include <map>
 #include <array>
 #include <iostream>
 #include <type_traits>
 
-template<typename T, int VAL = 0, size_t DIM = 2>
+template<typename T, int VAL = -1, size_t DIM = 2>
 class Matrix
 {
+public:
     using index = std::array<T, DIM>;
-    std::map<index, int> map;
+private:
+    using matrix_map = std::map<index, int>;
+    matrix_map map;
 
     template<typename ...Args>
     index createIdx(Args&&... args) const
@@ -23,10 +25,45 @@ class Matrix
     }
 
     class Iterator {
-        //TODO
+        typename matrix_map::iterator m_iter;
+    public:
+        Iterator(typename matrix_map::iterator ptr) : m_iter(ptr) {}
+        typename matrix_map::value_type& operator*()
+        {
+            return *m_iter;
+        }
+        typename matrix_map::iterator operator->()
+        {
+            return m_iter++;
+        }
+        void operator++()
+        {
+            ++m_iter;
+        }
+        bool operator==(const Iterator& rhs)
+        {
+            if(m_iter == rhs.m_iter)
+                return true;
+            return false;
+        }
+        bool operator!=(const Iterator& rhs)
+        {
+            if(m_iter != rhs.m_iter)
+                return true;
+            return false;
+        }
     };
 
-public:  
+public:
+    Iterator begin()
+    {
+        return Iterator(map.begin());
+    }
+    Iterator end()
+    {
+        return Iterator(map.end());
+    }
+
     struct Proxy {
         Matrix &realMatrix;
         index proxyIdx;
@@ -99,7 +136,3 @@ public:
         return map.size();
     }
 };
-
-
-
-#endif // MATRIX_H
