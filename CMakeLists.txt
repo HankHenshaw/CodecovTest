@@ -7,9 +7,12 @@ endif()
 project(codecov VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(codecov)
 
 add_executable(matrix matrix.h main.cpp)
 add_executable(tests matrix.h test_main.cpp)
+
+add_coverage(matrix)
 
 set_target_properties(matrix tests PROPERTIES
     CXX_STANDARD 17
@@ -44,3 +47,5 @@ include(CPack)
 enable_testing()
 
 add_test(tests tests)
+
+coverage_evaluate()

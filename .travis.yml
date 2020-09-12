@@ -6,13 +6,15 @@ addons:
     packages:
     - libboost-test-dev
 script:
+- gcc --version
 - cmake .
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
-- ./tests
+- ctest --verbose
+- make gcov
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash) -X gcov
 deploy:
   provider: script
   skip_cleanup: true
