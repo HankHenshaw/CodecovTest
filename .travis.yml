@@ -11,8 +11,7 @@ script:
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
-- ctest --verbose
-- make gcov
+- ./tests
 after_success:
 - bash <(curl -s https://codecov.io/bash) -X gcov
 deploy:
