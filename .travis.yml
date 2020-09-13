@@ -4,6 +4,8 @@ sudo: required
 compiler: gcc
 addons:
   apt:
+    sources:
+    - ubuntu-toolchain-r-test
     packages:
     - libboost-test-dev
     - g++-6
