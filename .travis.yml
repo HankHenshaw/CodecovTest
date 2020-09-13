@@ -8,10 +8,10 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - libboost-test-dev
-    - g++-6
-    - gcc-6
+    - g++-7
+    - gcc-7
 script:
-- cmake .
+- CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7 cmake .
 - cmake --build .
 - cmake --build . --target package
 - ctest
