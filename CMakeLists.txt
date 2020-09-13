@@ -22,12 +22,9 @@ set_target_properties(matrix tests PROPERTIES
 set_target_properties(tests PROPERTIES
     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-#    COMPILE_FLAGS "--coverage;-O0"
     COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
     LINK_FLAGS "-fprofile-arcs"
 )
-
-#target_link_libraries(matrix --coverage)
 
 target_link_libraries(tests
     ${Boost_LIBRARIES}
@@ -48,5 +45,4 @@ include(CPack)
 
 enable_testing()
 
-#target_link_libraries(tests --coverage)
 add_test(tests tests)
