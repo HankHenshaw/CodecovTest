@@ -1,17 +1,17 @@
 dist: xenial
 language: cpp
-compiler: clang
+compiler: gcc
 addons:
   apt:
     packages:
     - libboost-test-dev
     - g++-5
 script:
-- CXX=/usr/bin/g++-5 CC=/usr/bin/gcc-5 cmake .
+- cmake .
 - cmake --build .
 - cmake --build . --target package
 - ctest
-- gcc --version
+- g++ --version
 - gcov --version
 after_success:
 - bash <(curl -s https://codecov.io/bash)
