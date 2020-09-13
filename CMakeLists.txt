@@ -17,8 +17,8 @@ set_target_properties(matrix tests PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wall;-Wpedantic;-Wextra;"
-    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
-    LINK_FLAGS "-fprofile-arcs"
+#    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
+#    LINK_FLAGS "-fprofile-arcs"
 )
 
 set_target_properties(tests PROPERTIES
@@ -30,7 +30,7 @@ set_target_properties(tests PROPERTIES
 #    LINK_FLAGS "-lgcov --coverage"
 )
 
-target_link_libraries(matrix --coverage)
+#target_link_libraries(matrix --coverage)
 
 target_link_libraries(tests
     ${Boost_LIBRARIES}

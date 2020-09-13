@@ -10,6 +10,8 @@ script:
 - cmake --build .
 - cmake --build . --target package
 - ctest
+- ls CMakeFiles/matrix.dir
+- ls CMakeFiles/tests.dir
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 deploy:
