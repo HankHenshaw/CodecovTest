@@ -25,9 +25,12 @@ set_target_properties(tests PROPERTIES
     LINK_FLAGS "-lgcov --coverage"
 )
 
+target_link_libraries(matrix --coverage)
+
 target_link_libraries(tests
     ${Boost_LIBRARIES}
 )
+
 
 install(TARGETS matrix RUNTIME DESTINATION bin)
 
@@ -43,4 +46,5 @@ include(CPack)
 
 enable_testing()
 
+target_link_libraries(tests --coverage)
 add_test(tests tests)
