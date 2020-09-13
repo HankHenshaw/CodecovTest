@@ -17,11 +17,17 @@ set_target_properties(matrix tests PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wall;-Wpedantic;-Wextra;"
+    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
+    LINK_FLAGS "-fprofile-arcs"
 )
 
 set_target_properties(tests PROPERTIES
     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
+    LINK_FLAGS "-fprofile-arcs"
+
+#    LINK_FLAGS "-lgcov --coverage"
 )
 
 target_link_libraries(matrix --coverage)
