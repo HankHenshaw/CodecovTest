@@ -14,7 +14,7 @@ add_executable(tests matrix.h test_main.cpp)
 set_target_properties(matrix tests PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
-    COMPILE_OPTIONS "-Wall;-Wpedantic;-Wextra"
+    COMPILE_OPTIONS "-Wall;-Wpedantic;-Wextra;--coverage;-O0"
 )
 
 set_target_properties(tests PROPERTIES
@@ -22,7 +22,7 @@ set_target_properties(tests PROPERTIES
     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
     COMPILE_OPTIONS "--coverage;-O0"
 #    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
-    LINK_FLAGS "-lgcov --coverage"
+#    LINK_FLAGS "-lgcov --coverage"
 )
 
 target_link_libraries(matrix --coverage)

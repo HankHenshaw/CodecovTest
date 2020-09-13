@@ -6,10 +6,8 @@ addons:
     packages:
     - libboost-test-dev
 script:
-- gcc --version
 - cmake .
 - cmake --build .
-- cmake --build . --target test
 - cmake --build . --target package
 - ctest
 after_success:
