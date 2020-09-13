@@ -6,8 +6,8 @@ addons:
   apt:
     packages:
     - libboost-test-dev
-    - g++-7
-    - gcc-7
+    - g++-6
+    - gcc-6
 script:
 - cmake .
 - cmake --build .
