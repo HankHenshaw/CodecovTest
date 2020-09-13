@@ -15,8 +15,6 @@ script:
 - cmake --build .
 - cmake --build . --target package
 - ctest
-- g++ --version
-- gcov --version
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 deploy:
