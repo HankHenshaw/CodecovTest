@@ -22,8 +22,6 @@ set_target_properties(matrix tests PROPERTIES
 set_target_properties(tests PROPERTIES
     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
-    LINK_FLAGS "-fprofile-arcs"
 )
 
 target_link_libraries(tests
