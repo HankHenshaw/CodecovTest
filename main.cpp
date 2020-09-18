@@ -16,7 +16,6 @@ std::ostream& operator<<(std::ostream &os, const typename Matrix<int>::index& ar
 
 int main()
 {
-    /*----------ONE-----------*/
     Matrix<int> mat;
     std::cout << "SIZE = " << mat.size() << '\n';
 
@@ -28,7 +27,6 @@ int main()
     std::cout << "SIZE = " << mat.size() << '\n';
     std::cout << "mat(1, 1) = " << mat(1, 1) << '\n';
 
-    /*----------TWO-----------*/
     Matrix<int> mat2;
     const int SIZE = 10;
 
