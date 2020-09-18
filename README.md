@@ -4,4 +4,4 @@ Codecov: [![codecov](https://codecov.io/gh/HankHenshaw/CodecovTest/branch/master
 
 # Codecov Test
 
-Проверка работы с codecov
+Проверка работы с codecov.io
